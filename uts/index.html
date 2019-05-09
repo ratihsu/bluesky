@@ -31,8 +31,24 @@
 						<nav class="main_nav">
 							<ul>
 								<li class="active"><a href="index.html">Home</a></li>
+								<li><a href="../uts/admin/index.php">Admin</a>
+									<?php
+									include '../config.php';
+
+									// mengaktifkan session
+									session_start();
+									
+									// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+									if($_SESSION['status'] !="login"){
+										header("location:../admin/index.php");
+									}
+									
+									// menampilkan pesan selamat datang
+									echo "Hai, selamat datang ". $_SESSION['username'];
+									?>
+								</li>
 								<li><a href="about.html">About us</a></li>
-								<li><a href="properties.html">Properties</a></li>
+								<li><a href="properties.html">Galery</a></li>
 								<li><a href="news.html">News</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
